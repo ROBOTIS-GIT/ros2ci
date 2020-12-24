@@ -13,15 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if [[ "$1" != "crystal" ]] && [[ "$1" != "dashing" ]] && [[ "$1" != "eloquent" ]] && [[ "$1" != "foxy" ]] && [[ "$1" != "nightly" ]]; then
+if [[ "$1" != "dashing" ]] && [[ "$1" != "eloquent" ]] && [[ "$1" != "foxy" ]] && [[ "$1" != "nightly" ]] && [[ "$1" != "rolling" ]]; then
   echo "'$1' distro not supported"
   exit -1;
 elif [[ "$1" == "foxy" ]]; then
   export base_image="osrf/ros:foxy-desktop";
   export ros_distro="$1"
-elif [[ "$1" == "crystal" ]] || [[ "$1" == "dashing" ]] || [[ "$1" == "eloquent" ]]; then
-  export base_image="osrf/ros2:devel-bionic";
+elif [[ "$1" == "dashing" ]]; then
+  export base_image="osrf/ros:dashing-desktop";
   export ros_distro="$1"
+elif [[ "$1" == "eloquent" ]]; then
+  export base_image="osrf/ros:eloquent-desktop";
+  export ros_distro="$1"
+elif [[ "$1" == "rolling" ]]; then
+  export base_image="osrf/ros:rolling-desktop";
 fi
 
 export distro="$1"
